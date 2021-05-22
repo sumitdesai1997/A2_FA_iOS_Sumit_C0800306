@@ -90,6 +90,13 @@ class ProductsProvidersTVC: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let pvc = segue.destination as! ProductVC
         pvc.productList = self.productList
+        
+        // if the navigation is happening on the click of the cell from tableview
+        if let cell = sender as? UITableViewCell {
+            if let index = tableView.indexPath(for: cell)?.row {
+                pvc.selectedProduct = productList[index]
+            }
+        }
     }
     
     // on the click of plus button at the bottom toolbar we're navigating to the ProductVC using Present Modaly segue and not using the show segue

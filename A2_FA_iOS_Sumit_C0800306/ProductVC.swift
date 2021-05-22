@@ -16,9 +16,12 @@ class ProductVC: UIViewController {
     @IBOutlet weak var providerTF: UITextField!
     @IBOutlet weak var priceTF: UITextField!
     @IBOutlet weak var stockTF: UITextField!
+    @IBOutlet weak var btnCancel: UIButton!
+    @IBOutlet weak var btnSave: UIButton!
     
     // creating the product list here that will have the value from the ProductsProvidersTVC
     var productList = [Product]()
+    var selectedProduct : Product?
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -26,6 +29,32 @@ class ProductVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        nameTF.text = selectedProduct?.name
+        idTF.text = String(selectedProduct?.id ?? 0)
+        providerTF.text = selectedProduct?.provider
+        priceTF.text = String(selectedProduct?.price ?? 0.0)
+        stockTF.text = String(selectedProduct?.stock ?? 0)
+        
+        if(idTF.text == String(0)){
+            idTF.text = ""
+        }
+        if(priceTF.text == String(0.0)){
+            priceTF.text = ""
+        }
+        if(stockTF.text == String(0)){
+            stockTF.text = ""
+        }
+        
+        if(nameTF.text != ""){
+            btnSave.isHidden = true
+            btnCancel.isHidden = true
+            
+            nameTF.isEnabled = false
+            idTF.isEnabled = false
+            providerTF.isEnabled = false
+            priceTF.isEnabled = false
+            stockTF.isEnabled = false
+        }
     }
     
     @IBAction func clickSave(_ sender: UIButton) {
