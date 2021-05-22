@@ -16,6 +16,9 @@ class ProductsProvidersTVC: UITableViewController {
     // creating context object to work with the core data
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    // search bar object
+    let searchBar = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +28,8 @@ class ProductsProvidersTVC: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         title = "Products"
+        
+        showSearchBar()
         
         loadProducts()
         
@@ -216,14 +221,19 @@ class ProductsProvidersTVC: UITableViewController {
     }
     
     // method to load the products
-    func loadProducts(){
+    func loadProducts(predicate: NSPredicate? = nil){
         let request: NSFetchRequest<Product> = Product.fetchRequest()
         
+        if let requestedPredicate = predicate{
+            request.predicate = requestedPredicate
+        }
+    
         do{
             productList = try context.fetch(request)
         } catch{
             print("erro while loading products: \(error.localizedDescription)")
         }
+        tableView.reloadData()
     }
     
     // method to save data into context (as every time we run the simulator it will fetch the data from core data. so saving updated data into core data is mandatory)
@@ -240,4 +250,32 @@ class ProductsProvidersTVC: UITableViewController {
         context.delete(product)
     }
     
+    func showSearchBar() {
+        searchBar.searchBar.delegate = self
+        searchBar.obscuresBackgroundDuringPresentation = false
+        searchBar.searchBar.placeholder = "Search Product"
+        navigationItem.searchController = searchBar
+        definesPresentationContext = true
+        searchBar.searchBar.searchTextField.textColor = .black
+    }
+    
+}
+
+extension ProductsProvidersTVC: UISearchBarDelegate{
+        
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // add predicate
+        let predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchBar.text!)
+        loadProducts(predicate: predicate)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadProducts()
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
 }
