@@ -25,29 +25,29 @@ class ProductsProvidersTVC: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         title = "Products"
+        
+        loadProducts()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return productList.count
     }
     
-    /*
+    // method to display the value inside the cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellProduct", for: indexPath)
+        cell.textLabel?.text = productList[indexPath.row].name
+        cell.detailTextLabel?.text = productList[indexPath.row].provider
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -100,6 +100,7 @@ class ProductsProvidersTVC: UITableViewController {
         //let sourceViewController = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
         loadProducts()
+        print("Product list:\(productList)")
     }
     
     // method to load the products
