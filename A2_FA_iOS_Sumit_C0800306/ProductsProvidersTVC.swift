@@ -99,6 +99,7 @@ class ProductsProvidersTVC: UITableViewController {
     @IBAction func unwindToPPTVC(_ unwindSegue: UIStoryboardSegue) {
         //let sourceViewController = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
+        saveProducts()
         loadProducts()
         tableView.reloadData()
         print("Product list:\(productList)")
@@ -112,6 +113,15 @@ class ProductsProvidersTVC: UITableViewController {
             productList = try context.fetch(request)
         } catch{
             print("erro while loading products: \(error.localizedDescription)")
+        }
+    }
+    
+    // method to save data into context (as every time we run the simulator it will fetch the data from core data. so saving updated data into core data is mandatory)
+    func saveProducts(){
+        do{
+            try context.save()
+        } catch{
+            print("error: \(error.localizedDescription)")
         }
     }
     
