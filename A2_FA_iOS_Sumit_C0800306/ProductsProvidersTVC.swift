@@ -39,6 +39,16 @@ class ProductsProvidersTVC: UITableViewController {
         return 0
     }
     
+    // method to load the products
+    func loadProducts(){
+        let request: NSFetchRequest<Product> = Product.fetchRequest()
+        
+        do{
+            productList = try context.fetch(request)
+        } catch{
+            print("erro while loading products: \(error.localizedDescription)")
+        }
+    }
     
 
     /*
