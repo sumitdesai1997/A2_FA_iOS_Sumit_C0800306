@@ -27,8 +27,112 @@ class ProductsProvidersTVC: UITableViewController {
         title = "Products"
         
         loadProducts()
+        
+        if(productList.count == 0){
+            fillData()
+        }
+        
     }
 
+    func fillData(){
+        let product1 = Product(context: context)
+        product1.id = 1
+        product1.name = "Chair"
+        product1.price = 20
+        product1.provider = "Amazon"
+        product1.stock = 100
+        
+        let product2 = Product(context: context)
+        product2.id = 2
+        product2.name = "Fan"
+        product2.price = 25
+        product2.provider = "Amazon"
+        product2.stock = 200
+        
+        let product3 = Product(context: context)
+        product3.id = 3
+        product3.name = "Hair oil"
+        product3.price = 2
+        product3.provider = "Snapdeal"
+        product3.stock = 500
+        
+        let product4 = Product(context: context)
+        product4.id = 4
+        product4.name = "Hard drive"
+        product4.price = 25
+        product4.provider = "Alibaba"
+        product4.stock = 500
+        
+        let product5 = Product(context: context)
+        product5.id = 5
+        product5.name = "Earphone"
+        product5.price = 25
+        product5.provider = "Flipkart"
+        product5.stock = 200
+        
+        let product6 = Product(context: context)
+        product6.id = 6
+        product6.name = "Keyboard"
+        product6.price = 10
+        product6.provider = "Dell"
+        product6.stock = 200
+        
+        let product7 = Product(context: context)
+        product7.id = 7
+        product7.name = "Mouse"
+        product7.price = 6
+        product7.provider = "Lenovo"
+        product7.stock = 100
+        
+        let product8 = Product(context: context)
+        product8.id = 8
+        product8.name = "Solid state drive"
+        product8.price = 45
+        product8.provider = "Toshiba"
+        product8.stock = 250
+        
+        let product9 = Product(context: context)
+        product9.id = 9
+        product9.name = "Charger"
+        product9.price = 4
+        product9.provider = "HP"
+        product9.stock = 200
+        
+        let product10 = Product(context: context)
+        product10.id = 10
+        product10.name = "Tubelight"
+        product10.price = 3
+        product10.provider = "Amazon"
+        product10.stock = 500
+        
+        let product11 = Product(context: context)
+        product11.id = 11
+        product11.name = "Seat cover"
+        product1.price = 8
+        product11.provider = "Hyundai"
+        product11.stock = 50
+        
+        let product12 = Product(context: context)
+        product12.id = 12
+        product12.name = "Music player"
+        product12.price = 9
+        product12.provider = "Amazon"
+        product12.stock = 200
+        
+        productList.append(product1)
+        productList.append(product2)
+        productList.append(product3)
+        productList.append(product4)
+        productList.append(product5)
+        productList.append(product6)
+        productList.append(product7)
+        productList.append(product8)
+        productList.append(product9)
+        productList.append(product10)
+        productList.append(product11)
+        productList.append(product12)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
