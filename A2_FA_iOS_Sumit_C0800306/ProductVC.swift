@@ -27,17 +27,32 @@ class ProductVC: UIViewController {
     }
     
     @IBAction func clickSave(_ sender: UIButton) {
-        
+        if shouldPerformSegue(withIdentifier: "toThePPTVC", sender: self){
+            // do your work before you want to perform segue below then call perform segue
+            
+            performSegue(withIdentifier: "toThePPTVC", sender: self)
+        }
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let pptvc = segue.destination as! ProductsProvidersTVC
+        pptvc.productList = self.productList
     }
-    */
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return validateData()
+    }
+    
+    func validateData() -> Bool{
+        if(nameTF.text == "" || idTF.text == "" || providerTF.text == "" || priceTF.text == "" || stockTF.text == ""){
+            return false
+        }
+        return true
+    }
+    
 
 }

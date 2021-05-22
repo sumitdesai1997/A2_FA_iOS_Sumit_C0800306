@@ -127,9 +127,11 @@
                         <outlet property="priceTF" destination="gN8-aS-fp1" id="LwP-wO-woX"/>
                         <outlet property="providerTF" destination="8uy-dS-E54" id="OfR-Ma-t6e"/>
                         <outlet property="stockTF" destination="IqG-Ub-cR9" id="gKh-Db-RM0"/>
+                        <segue destination="kqf-0k-Uea" kind="unwind" identifier="toThePPTVC" unwindAction="unwindToPPTVC:" id="bb2-7J-YuG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CS4-Xe-bVR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="kqf-0k-Uea" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1580" y="60"/>
         </scene>

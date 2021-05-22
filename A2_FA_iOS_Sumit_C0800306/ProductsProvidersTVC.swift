@@ -93,6 +93,15 @@ class ProductsProvidersTVC: UITableViewController {
         pvc.productList = self.productList
     }
     
+    // on the click of plus button at the bottom toolbar we're navigating to the ProductVC using Present Modaly segue and not using the show segue
+    // so at the time of getting back from productVC to PPTVC, we need to use this unwind segue, which is an IBAction
+    // to perform this, we need to create this IBAction segue in the depart screen and in the mainstoryboard we have to connect ProductVC to Exit (both options are available just above to the ProductVC screen and select the name of this IBAction segue, give the name to this segue. That's it, now we can perform this segue whenever required in the ProductVC)
+    @IBAction func unwindToPPTVC(_ unwindSegue: UIStoryboardSegue) {
+        //let sourceViewController = unwindSegue.source
+        // Use data from the view controller which initiated the unwind segue
+        loadProducts()
+    }
+    
     // method to load the products
     func loadProducts(){
         let request: NSFetchRequest<Product> = Product.fetchRequest()
