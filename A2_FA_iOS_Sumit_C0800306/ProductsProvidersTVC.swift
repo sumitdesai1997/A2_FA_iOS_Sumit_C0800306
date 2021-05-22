@@ -100,6 +100,7 @@ class ProductsProvidersTVC: UITableViewController {
         //let sourceViewController = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
         loadProducts()
+        tableView.reloadData()
         print("Product list:\(productList)")
     }
     
