@@ -20,6 +20,8 @@ class ProductVC: UIViewController {
     // creating the product list here that will have the value from the ProductsProvidersTVC
     var productList = [Product]()
     
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
