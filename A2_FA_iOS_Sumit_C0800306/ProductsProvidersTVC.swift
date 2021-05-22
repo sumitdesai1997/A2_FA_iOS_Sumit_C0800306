@@ -39,18 +39,6 @@ class ProductsProvidersTVC: UITableViewController {
         return 0
     }
     
-    // method to load the products
-    func loadProducts(){
-        let request: NSFetchRequest<Product> = Product.fetchRequest()
-        
-        do{
-            productList = try context.fetch(request)
-        } catch{
-            print("erro while loading products: \(error.localizedDescription)")
-        }
-    }
-    
-
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -96,14 +84,24 @@ class ProductsProvidersTVC: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let pvc = segue.destination as! ProductVC
+        pvc.productList = self.productList
     }
-    */
-
+    
+    // method to load the products
+    func loadProducts(){
+        let request: NSFetchRequest<Product> = Product.fetchRequest()
+        
+        do{
+            productList = try context.fetch(request)
+        } catch{
+            print("erro while loading products: \(error.localizedDescription)")
+        }
+    }
+    
 }

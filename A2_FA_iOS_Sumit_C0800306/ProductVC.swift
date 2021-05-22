@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ProductVC: UIViewController {
     
@@ -15,6 +16,9 @@ class ProductVC: UIViewController {
     @IBOutlet weak var providerTF: UITextField!
     @IBOutlet weak var priceTF: UITextField!
     @IBOutlet weak var stockTF: UITextField!
+    
+    // creating the product list here that will have the value from the ProductsProvidersTVC
+    var productList = [Product]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
