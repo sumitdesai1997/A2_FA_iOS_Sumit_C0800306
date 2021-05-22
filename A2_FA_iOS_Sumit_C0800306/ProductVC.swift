@@ -8,14 +8,24 @@
 import UIKit
 
 class ProductVC: UIViewController {
-
+    
+    
+    @IBOutlet weak var nameTF: UITextField!
+    @IBOutlet weak var idTF: UITextField!
+    @IBOutlet weak var providerTF: UITextField!
+    @IBOutlet weak var priceTF: UITextField!
+    @IBOutlet weak var stockTF: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func clickSave(_ sender: UIButton) {
+        
+    }
+    
     /*
     // MARK: - Navigation
 

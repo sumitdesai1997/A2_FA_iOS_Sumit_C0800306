@@ -46,10 +46,10 @@
             </objects>
             <point key="canvasLocation" x="803" y="60"/>
         </scene>
-        <!--View Controller-->
+        <!--ProductVC-->
         <scene sceneID="rg4-iD-2hQ">
             <objects>
-                <viewController id="Ft2-st-IEX" sceneMemberID="viewController">
+                <viewController id="Ft2-st-IEX" customClass="ProductVC" customModule="A2_FA_iOS_Sumit_C0800306" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sZW-9N-Q6K">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,6 +91,9 @@
                                 <state key="normal" title="Save">
                                     <color key="titleColor" systemColor="systemBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="clickSave:" destination="Ft2-st-IEX" eventType="touchUpInside" id="8sP-Uh-PMq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dyy-Nh-Yl9"/>
@@ -118,6 +121,13 @@
                             <constraint firstItem="8uy-dS-E54" firstAttribute="leading" secondItem="dyy-Nh-Yl9" secondAttribute="leading" constant="20" id="xUN-FO-tHO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="idTF" destination="nqH-VZ-yev" id="Rn7-kZ-M1C"/>
+                        <outlet property="nameTF" destination="lHU-AP-eDa" id="uc5-hS-Hy2"/>
+                        <outlet property="priceTF" destination="gN8-aS-fp1" id="LwP-wO-woX"/>
+                        <outlet property="providerTF" destination="8uy-dS-E54" id="OfR-Ma-t6e"/>
+                        <outlet property="stockTF" destination="IqG-Ub-cR9" id="gKh-Db-RM0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CS4-Xe-bVR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
