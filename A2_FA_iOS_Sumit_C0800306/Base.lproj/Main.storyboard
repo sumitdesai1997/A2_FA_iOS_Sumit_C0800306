@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,14 +33,95 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="xSu-Gb-3HS"/>
-                        <barButtonItem title="Item" image="plus" catalog="system" id="qQ1-fR-nZf"/>
+                        <barButtonItem title="Item" image="plus" catalog="system" id="qQ1-fR-nZf">
+                            <connections>
+                                <segue destination="Ft2-st-IEX" kind="presentation" id="Kl2-Rg-umI"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="kmC-w9-00I"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7jk-89-mKn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="984.05797101449286" y="59.598214285714285"/>
+            <point key="canvasLocation" x="803" y="60"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="rg4-iD-2hQ">
+            <objects>
+                <viewController id="Ft2-st-IEX" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sZW-9N-Q6K">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyE-ZT-DIs">
+                                <rect key="frame" x="337" y="20" width="57" height="37"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
+                                <state key="normal" title="Cancel"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHU-AP-eDa">
+                                <rect key="frame" x="20" y="87" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nqH-VZ-yev">
+                                <rect key="frame" x="20" y="141" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Provider" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8uy-dS-E54">
+                                <rect key="frame" x="20" y="195" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gN8-aS-fp1">
+                                <rect key="frame" x="20" y="249" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Stock" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IqG-Ub-cR9">
+                                <rect key="frame" x="20" y="303" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RER-m4-0aC">
+                                <rect key="frame" x="20" y="357" width="374" height="37"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dyy-Nh-Yl9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nqH-VZ-yev" firstAttribute="top" secondItem="lHU-AP-eDa" secondAttribute="bottom" constant="20" id="3Cc-Ya-HMd"/>
+                            <constraint firstItem="lHU-AP-eDa" firstAttribute="top" secondItem="dyE-ZT-DIs" secondAttribute="bottom" constant="30" id="7b1-cF-f0c"/>
+                            <constraint firstItem="dyy-Nh-Yl9" firstAttribute="trailing" secondItem="IqG-Ub-cR9" secondAttribute="trailing" constant="20" id="9yX-HI-nTx"/>
+                            <constraint firstItem="dyy-Nh-Yl9" firstAttribute="trailing" secondItem="nqH-VZ-yev" secondAttribute="trailing" constant="20" id="EZJ-J1-tU7"/>
+                            <constraint firstItem="lHU-AP-eDa" firstAttribute="leading" secondItem="dyy-Nh-Yl9" secondAttribute="leading" constant="20" id="JeN-cD-b9B"/>
+                            <constraint firstItem="gN8-aS-fp1" firstAttribute="leading" secondItem="dyy-Nh-Yl9" secondAttribute="leading" constant="20" id="KZZ-ov-1iP"/>
+                            <constraint firstItem="dyE-ZT-DIs" firstAttribute="top" secondItem="dyy-Nh-Yl9" secondAttribute="top" constant="20" id="Kpp-UN-sru"/>
+                            <constraint firstItem="dyy-Nh-Yl9" firstAttribute="trailing" secondItem="RER-m4-0aC" secondAttribute="trailing" constant="20" id="MQQ-hE-n1Q"/>
+                            <constraint firstItem="dyy-Nh-Yl9" firstAttribute="trailing" secondItem="gN8-aS-fp1" secondAttribute="trailing" constant="20" id="SwH-I8-9z9"/>
+                            <constraint firstItem="dyy-Nh-Yl9" firstAttribute="trailing" secondItem="8uy-dS-E54" secondAttribute="trailing" constant="20" id="TP4-kk-ruk"/>
+                            <constraint firstItem="IqG-Ub-cR9" firstAttribute="top" secondItem="gN8-aS-fp1" secondAttribute="bottom" constant="20" id="Vaj-2i-IQE"/>
+                            <constraint firstItem="nqH-VZ-yev" firstAttribute="leading" secondItem="dyy-Nh-Yl9" secondAttribute="leading" constant="20" id="XLC-RD-vY2"/>
+                            <constraint firstItem="RER-m4-0aC" firstAttribute="top" secondItem="IqG-Ub-cR9" secondAttribute="bottom" constant="20" id="adM-ci-zR4"/>
+                            <constraint firstItem="dyy-Nh-Yl9" firstAttribute="trailing" secondItem="dyE-ZT-DIs" secondAttribute="trailing" constant="20" id="dbS-m6-FN7"/>
+                            <constraint firstItem="RER-m4-0aC" firstAttribute="leading" secondItem="dyy-Nh-Yl9" secondAttribute="leading" constant="20" id="emo-RO-VEd"/>
+                            <constraint firstItem="gN8-aS-fp1" firstAttribute="top" secondItem="8uy-dS-E54" secondAttribute="bottom" constant="20" id="gw4-Na-631"/>
+                            <constraint firstItem="IqG-Ub-cR9" firstAttribute="leading" secondItem="dyy-Nh-Yl9" secondAttribute="leading" constant="20" id="k33-12-AXt"/>
+                            <constraint firstItem="dyy-Nh-Yl9" firstAttribute="trailing" secondItem="lHU-AP-eDa" secondAttribute="trailing" constant="20" id="pbf-XS-m1G"/>
+                            <constraint firstItem="8uy-dS-E54" firstAttribute="top" secondItem="nqH-VZ-yev" secondAttribute="bottom" constant="20" id="xR3-lP-Et8"/>
+                            <constraint firstItem="8uy-dS-E54" firstAttribute="leading" secondItem="dyy-Nh-Yl9" secondAttribute="leading" constant="20" id="xUN-FO-tHO"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CS4-Xe-bVR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1580" y="60"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4sr-XC-AMT">
@@ -67,6 +149,9 @@
     </scenes>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
