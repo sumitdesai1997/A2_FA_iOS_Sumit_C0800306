@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		03FFDBA62658C09F002CAFC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FFDBA52658C09F002CAFC1 /* AppDelegate.swift */; };
 		03FFDBA82658C09F002CAFC1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FFDBA72658C09F002CAFC1 /* SceneDelegate.swift */; };
-		03FFDBAA2658C09F002CAFC1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FFDBA92658C09F002CAFC1 /* ViewController.swift */; };
 		03FFDBAD2658C09F002CAFC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03FFDBAB2658C09F002CAFC1 /* Main.storyboard */; };
 		03FFDBB02658C09F002CAFC1 /* A2_FA_iOS_Sumit_C0800306.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03FFDBAE2658C09F002CAFC1 /* A2_FA_iOS_Sumit_C0800306.xcdatamodeld */; };
 		03FFDBB22658C0A6002CAFC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03FFDBB12658C0A6002CAFC1 /* Assets.xcassets */; };
 		03FFDBB52658C0A6002CAFC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03FFDBB32658C0A6002CAFC1 /* LaunchScreen.storyboard */; };
 		03FFDBC02658C0A6002CAFC1 /* A2_FA_iOS_Sumit_C0800306Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FFDBBF2658C0A6002CAFC1 /* A2_FA_iOS_Sumit_C0800306Tests.swift */; };
 		03FFDBCB2658C0A6002CAFC1 /* A2_FA_iOS_Sumit_C0800306UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FFDBCA2658C0A6002CAFC1 /* A2_FA_iOS_Sumit_C0800306UITests.swift */; };
+		03FFDBDF2658C576002CAFC1 /* ProductsProvidersTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FFDBDE2658C576002CAFC1 /* ProductsProvidersTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,6 @@
 		03FFDBA22658C09F002CAFC1 /* A2_FA_iOS_Sumit_C0800306.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = A2_FA_iOS_Sumit_C0800306.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FFDBA52658C09F002CAFC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03FFDBA72658C09F002CAFC1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		03FFDBA92658C09F002CAFC1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		03FFDBAC2658C09F002CAFC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		03FFDBAF2658C09F002CAFC1 /* A2_FA_iOS_Sumit_C0800306.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = A2_FA_iOS_Sumit_C0800306.xcdatamodel; sourceTree = "<group>"; };
 		03FFDBB12658C0A6002CAFC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		03FFDBC62658C0A6002CAFC1 /* A2_FA_iOS_Sumit_C0800306UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = A2_FA_iOS_Sumit_C0800306UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FFDBCA2658C0A6002CAFC1 /* A2_FA_iOS_Sumit_C0800306UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A2_FA_iOS_Sumit_C0800306UITests.swift; sourceTree = "<group>"; };
 		03FFDBCC2658C0A6002CAFC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03FFDBDE2658C576002CAFC1 /* ProductsProvidersTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsProvidersTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,12 +103,12 @@
 			children = (
 				03FFDBA52658C09F002CAFC1 /* AppDelegate.swift */,
 				03FFDBA72658C09F002CAFC1 /* SceneDelegate.swift */,
-				03FFDBA92658C09F002CAFC1 /* ViewController.swift */,
 				03FFDBAB2658C09F002CAFC1 /* Main.storyboard */,
 				03FFDBB12658C0A6002CAFC1 /* Assets.xcassets */,
 				03FFDBB32658C0A6002CAFC1 /* LaunchScreen.storyboard */,
 				03FFDBB62658C0A6002CAFC1 /* Info.plist */,
 				03FFDBAE2658C09F002CAFC1 /* A2_FA_iOS_Sumit_C0800306.xcdatamodeld */,
+				03FFDBDE2658C576002CAFC1 /* ProductsProvidersTVC.swift */,
 			);
 			path = A2_FA_iOS_Sumit_C0800306;
 			sourceTree = "<group>";
@@ -262,8 +262,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				03FFDBB02658C09F002CAFC1 /* A2_FA_iOS_Sumit_C0800306.xcdatamodeld in Sources */,
-				03FFDBAA2658C09F002CAFC1 /* ViewController.swift in Sources */,
 				03FFDBA62658C09F002CAFC1 /* AppDelegate.swift in Sources */,
+				03FFDBDF2658C576002CAFC1 /* ProductsProvidersTVC.swift in Sources */,
 				03FFDBA82658C09F002CAFC1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
