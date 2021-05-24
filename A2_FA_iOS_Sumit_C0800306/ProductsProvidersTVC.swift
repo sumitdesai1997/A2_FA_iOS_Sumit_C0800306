@@ -36,9 +36,30 @@ class ProductsProvidersTVC: UITableViewController {
         if(productList.count == 0){
             fillData()
         }
+    }
+    
+    // part 1: on view did appear redirect to the product details of the first row
+    var isRedirected = false
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if(!isRedirected){
+            let indexPath = IndexPath(row: 0, section: 0)
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
+            tableView.delegate?.tableView?(tableView!, didSelectRowAt: indexPath)
+        }
+    }
+    
+    // part 2: as we need to select the cell, we need to provide what we need once the cell is selected
+    // if we're doing selection of row programatically then segue is not happening which we had provided from the table cell to the required screen into mainstoryboard. so we have to manually perform the seuge here
+    // now we only want to perform this manual seuge once only (and that too for our provided indexpath at the time of view dead appear). so we need to provide the restriction using the flag
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(!isRedirected){
+            performSegue(withIdentifier: "cellToProduct", sender: self)
+            isRedirected = true
+        }
         
     }
-
+    
     func fillData(){
         let product1 = Product(context: context)
         product1.id = 1
@@ -212,6 +233,8 @@ class ProductsProvidersTVC: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let pvc = segue.destination as! ProductVC
         pvc.productList = self.productList
+        // part 3: when we programatically selecting the row then it is not counting that sender is cell. so it will be not able to recognize the selected product. so we need to provide the default value for the selected product.
+        pvc.selectedProduct = productList[0]
         
         // if the navigation is happening on the click of the cell from tableview
         if let cell = sender as? UITableViewCell {
