@@ -269,6 +269,14 @@ extension ProductsProvidersTVC: UISearchBarDelegate{
         loadProducts(predicate: predicate)
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        loadProducts()
+        
+        DispatchQueue.main.async {
+            searchBar.resignFirstResponder()
+        }
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text?.count == 0 {
             loadProducts()
