@@ -42,87 +42,100 @@ class ProductsProvidersTVC: UITableViewController {
     func fillData(){
         let product1 = Product(context: context)
         product1.id = 1
-        product1.name = "Chair"
+        product1.name = "Nightstand"
         product1.price = 20
         product1.provider = "Amazon"
         product1.stock = 100
+        product1.details = "A nightstand, alternatively night table, bedside table, daystand or bedside cabinet, is a small table or cabinet designed to stand beside a bed or elsewhere in a bedroom."
         
         let product2 = Product(context: context)
         product2.id = 2
-        product2.name = "Fan"
+        product2.name = "Swivel Chair"
         product2.price = 25
         product2.provider = "Amazon"
         product2.stock = 200
+        product2.details = "A swivel, spinny, or revolving chair is a chair with a single central leg that allows the seat to rotate 360 degrees to the left or right."
         
         let product3 = Product(context: context)
         product3.id = 3
-        product3.name = "Hair oil"
-        product3.price = 2
+        product3.name = "Chair"
+        product3.price = 15
         product3.provider = "Snapdeal"
         product3.stock = 500
+        product3.details = "One of the basic pieces of furniture, a chair is a type of seat."
         
         let product4 = Product(context: context)
         product4.id = 4
-        product4.name = "Hard drive"
-        product4.price = 25
+        product4.name = "Wardrobe"
+        product4.price = 50
         product4.provider = "Alibaba"
         product4.stock = 500
+        product4.details = "a large, tall cupboard or recess in which clothes may be hung or stored."
         
         let product5 = Product(context: context)
         product5.id = 5
-        product5.name = "Earphone"
+        product5.name = "Pier-glass"
         product5.price = 25
         product5.provider = "Flipkart"
         product5.stock = 200
+        product5.details = "a large mirror, used originally to fill wall space between windows."
         
         let product6 = Product(context: context)
         product6.id = 6
-        product6.name = "Keyboard"
-        product6.price = 10
-        product6.provider = "Dell"
+        product6.name = "Sofa"
+        product6.price = 30
+        product6.provider = "IKEA"
         product6.stock = 200
+        product6.details = "a long upholstered seat with a back and arms, for two or more people."
         
         let product7 = Product(context: context)
         product7.id = 7
-        product7.name = "Mouse"
-        product7.price = 6
-        product7.provider = "Lenovo"
+        product7.name = "Desk"
+        product7.price = 20
+        product7.provider = "Flipkart"
         product7.stock = 100
+        product7.details = "a piece of furniture with a flat or sloping surface and typically with drawers, at which one can read, write, or do other work."
         
         let product8 = Product(context: context)
         product8.id = 8
-        product8.name = "Solid state drive"
-        product8.price = 45
-        product8.provider = "Toshiba"
+        product8.name = "Armchair"
+        product8.price = 25
+        product8.provider = "IKEA"
         product8.stock = 250
+        product8.details = "a large, comfortable chair with side supports for a person's arms."
+        
         
         let product9 = Product(context: context)
         product9.id = 9
-        product9.name = "Charger"
-        product9.price = 4
-        product9.provider = "HP"
+        product9.name = "Bed"
+        product9.price = 50
+        product9.provider = "IKEA"
         product9.stock = 200
+        product9.details = "a piece of furniture for sleep or rest, typically a framework with a mattress."
         
         let product10 = Product(context: context)
         product10.id = 10
-        product10.name = "Tubelight"
-        product10.price = 3
+        product10.name = "Coffe table"
+        product10.price = 20
         product10.provider = "Amazon"
         product10.stock = 500
+        product10.details = "A coffee table is a low table designed to be placed in a sitting area for convenient support of beverages, remote controls, magazines, books, decorative objects, and other small items."
         
         let product11 = Product(context: context)
         product11.id = 11
-        product11.name = "Seat cover"
-        product1.price = 8
-        product11.provider = "Hyundai"
+        product11.name = "Rocking chair"
+        product1.price = 18
+        product11.provider = "Flipkart"
         product11.stock = 50
+        product11.details = "a chair mounted on rockers or springs, which can rock back and forth."
         
         let product12 = Product(context: context)
         product12.id = 12
-        product12.name = "Music player"
-        product12.price = 9
+        product12.name = "Stool"
+        product12.price = 10
         product12.provider = "Amazon"
         product12.stock = 200
+        product12.details = "a seat without a back or arms, typically resting on three or four legs or on a single pedestal."
         
         productList.append(product1)
         productList.append(product2)

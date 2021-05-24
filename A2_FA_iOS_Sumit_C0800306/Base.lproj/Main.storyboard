@@ -104,7 +104,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RER-m4-0aC">
-                                <rect key="frame" x="20" y="497" width="374" height="37"/>
+                                <rect key="frame" x="20" y="645" width="374" height="37"/>
                                 <color key="backgroundColor" systemColor="linkColor"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
                                 <state key="normal" title="Save">
@@ -114,6 +114,17 @@
                                     <action selector="clickSave:" destination="Ft2-st-IEX" eventType="touchUpInside" id="8sP-Uh-PMq"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EoP-iR-YZK">
+                                <rect key="frame" x="20" y="497" width="374" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="l1i-Td-24J"/>
+                                    <constraint firstAttribute="width" constant="374" id="uKE-qT-RM6"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dyy-Nh-Yl9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -122,19 +133,22 @@
                             <constraint firstItem="lHU-AP-eDa" firstAttribute="top" secondItem="dyE-ZT-DIs" secondAttribute="bottom" constant="30" id="7b1-cF-f0c"/>
                             <constraint firstItem="dyy-Nh-Yl9" firstAttribute="trailing" secondItem="IqG-Ub-cR9" secondAttribute="trailing" constant="20" id="9yX-HI-nTx"/>
                             <constraint firstItem="dyy-Nh-Yl9" firstAttribute="trailing" secondItem="nqH-VZ-yev" secondAttribute="trailing" constant="20" id="EZJ-J1-tU7"/>
+                            <constraint firstItem="dyy-Nh-Yl9" firstAttribute="trailing" secondItem="EoP-iR-YZK" secondAttribute="trailing" constant="20" id="IVl-aS-uIn"/>
                             <constraint firstItem="lHU-AP-eDa" firstAttribute="leading" secondItem="dyy-Nh-Yl9" secondAttribute="leading" constant="20" id="JeN-cD-b9B"/>
                             <constraint firstItem="gN8-aS-fp1" firstAttribute="leading" secondItem="dyy-Nh-Yl9" secondAttribute="leading" constant="20" id="KZZ-ov-1iP"/>
                             <constraint firstItem="dyE-ZT-DIs" firstAttribute="top" secondItem="dyy-Nh-Yl9" secondAttribute="top" constant="20" id="Kpp-UN-sru"/>
                             <constraint firstItem="dyy-Nh-Yl9" firstAttribute="trailing" secondItem="RER-m4-0aC" secondAttribute="trailing" constant="20" id="MQQ-hE-n1Q"/>
                             <constraint firstItem="dyy-Nh-Yl9" firstAttribute="trailing" secondItem="gN8-aS-fp1" secondAttribute="trailing" constant="20" id="SwH-I8-9z9"/>
                             <constraint firstItem="dyy-Nh-Yl9" firstAttribute="trailing" secondItem="8uy-dS-E54" secondAttribute="trailing" constant="20" id="TP4-kk-ruk"/>
+                            <constraint firstItem="RER-m4-0aC" firstAttribute="top" secondItem="EoP-iR-YZK" secondAttribute="bottom" constant="20" id="VN4-Zs-Vjg"/>
                             <constraint firstItem="IqG-Ub-cR9" firstAttribute="top" secondItem="gN8-aS-fp1" secondAttribute="bottom" constant="20" id="Vaj-2i-IQE"/>
                             <constraint firstItem="nqH-VZ-yev" firstAttribute="leading" secondItem="dyy-Nh-Yl9" secondAttribute="leading" constant="20" id="XLC-RD-vY2"/>
-                            <constraint firstItem="RER-m4-0aC" firstAttribute="top" secondItem="IqG-Ub-cR9" secondAttribute="bottom" constant="20" id="adM-ci-zR4"/>
+                            <constraint firstItem="EoP-iR-YZK" firstAttribute="top" secondItem="IqG-Ub-cR9" secondAttribute="bottom" constant="20" id="dYP-QV-HHa"/>
                             <constraint firstItem="dyy-Nh-Yl9" firstAttribute="trailing" secondItem="dyE-ZT-DIs" secondAttribute="trailing" constant="20" id="dbS-m6-FN7"/>
                             <constraint firstItem="RER-m4-0aC" firstAttribute="leading" secondItem="dyy-Nh-Yl9" secondAttribute="leading" constant="20" id="emo-RO-VEd"/>
                             <constraint firstItem="gN8-aS-fp1" firstAttribute="top" secondItem="8uy-dS-E54" secondAttribute="bottom" constant="20" id="gw4-Na-631"/>
                             <constraint firstItem="IqG-Ub-cR9" firstAttribute="leading" secondItem="dyy-Nh-Yl9" secondAttribute="leading" constant="20" id="k33-12-AXt"/>
+                            <constraint firstItem="EoP-iR-YZK" firstAttribute="leading" secondItem="dyy-Nh-Yl9" secondAttribute="leading" constant="20" id="nNV-Wn-fjs"/>
                             <constraint firstItem="dyy-Nh-Yl9" firstAttribute="trailing" secondItem="lHU-AP-eDa" secondAttribute="trailing" constant="20" id="pbf-XS-m1G"/>
                             <constraint firstItem="8uy-dS-E54" firstAttribute="top" secondItem="nqH-VZ-yev" secondAttribute="bottom" constant="20" id="xR3-lP-Et8"/>
                             <constraint firstItem="8uy-dS-E54" firstAttribute="leading" secondItem="dyy-Nh-Yl9" secondAttribute="leading" constant="20" id="xUN-FO-tHO"/>
@@ -144,6 +158,7 @@
                     <connections>
                         <outlet property="btnCancel" destination="dyE-ZT-DIs" id="BxJ-Hp-sxs"/>
                         <outlet property="btnSave" destination="RER-m4-0aC" id="WC8-H2-fW8"/>
+                        <outlet property="detailsTV" destination="EoP-iR-YZK" id="eH1-eB-8yk"/>
                         <outlet property="idTF" destination="nqH-VZ-yev" id="Rn7-kZ-M1C"/>
                         <outlet property="nameTF" destination="lHU-AP-eDa" id="uc5-hS-Hy2"/>
                         <outlet property="priceTF" destination="gN8-aS-fp1" id="LwP-wO-woX"/>
@@ -186,6 +201,9 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -16,6 +16,7 @@ class ProductVC: UIViewController {
     @IBOutlet weak var providerTF: UITextField!
     @IBOutlet weak var priceTF: UITextField!
     @IBOutlet weak var stockTF: UITextField!
+    @IBOutlet weak var detailsTV: UITextView!
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var btnSave: UIButton!
     
@@ -34,6 +35,7 @@ class ProductVC: UIViewController {
         providerTF.text = selectedProduct?.provider
         priceTF.text = String(selectedProduct?.price ?? 0.0)
         stockTF.text = String(selectedProduct?.stock ?? 0)
+        detailsTV.text = selectedProduct?.details
         
         if(idTF.text == String(0)){
             idTF.text = ""
@@ -54,6 +56,7 @@ class ProductVC: UIViewController {
             providerTF.isEnabled = false
             priceTF.isEnabled = false
             stockTF.isEnabled = false
+            detailsTV.isEditable = false
         }
     }
     
@@ -80,7 +83,7 @@ class ProductVC: UIViewController {
     
     // validating the data entered by user
     func validateData() -> Bool{
-        if(nameTF.text == "" || idTF.text == "" || providerTF.text == "" || priceTF.text == "" || stockTF.text == ""){
+        if(nameTF.text == "" || idTF.text == "" || providerTF.text == "" || priceTF.text == "" || stockTF.text == "" || detailsTV.text == ""){
             return false
         } else {
             // if value entered by user then create Object of Product and add that object to productList
@@ -94,6 +97,7 @@ class ProductVC: UIViewController {
             if let stock = stockTF.text{
                 newProduct.stock = Int16(stock)!
             }
+            newProduct.details = detailsTV.text
             self.productList.append(newProduct)
         }
         return true
