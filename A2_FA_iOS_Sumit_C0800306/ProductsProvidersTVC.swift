@@ -296,6 +296,10 @@ class ProductsProvidersTVC: UITableViewController {
         searchBar.searchBar.searchTextField.textColor = .black
     }
     
+    @IBAction func showClick(_ sender: UIBarButtonItem) {
+    }
+    
+    
 }
 
 extension ProductsProvidersTVC: UISearchBarDelegate{

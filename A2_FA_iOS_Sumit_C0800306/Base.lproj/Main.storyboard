@@ -52,6 +52,11 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
+                        <barButtonItem title="Show" id="Reu-xs-Lw4">
+                            <connections>
+                                <action selector="showClick:" destination="7dv-bV-fhb" id="2Zu-r9-111"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="xSu-Gb-3HS"/>
                         <barButtonItem title="Add product" image="plus" catalog="system" id="pKl-K5-Kfl">
                             <connections>
