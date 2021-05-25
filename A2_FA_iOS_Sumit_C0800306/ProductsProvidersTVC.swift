@@ -192,15 +192,15 @@ class ProductsProvidersTVC: UITableViewController {
     */
 
     // Override to support editing the table view.
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            deleteProduct(product: productList[indexPath.row])
-//            // after deleting the data from the core data it is mandatory to save the core data
-//            saveProducts()
-//            productList.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//        }
-//    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteProduct(product: productList[indexPath.row])
+            // after deleting the data from the core data it is mandatory to save the core data
+            saveProducts()
+            productList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
 
     /*
     // Override to support rearranging the table view.
@@ -225,7 +225,12 @@ class ProductsProvidersTVC: UITableViewController {
         let pvc = segue.destination as! ProductVC
         pvc.productList = self.productList
         // part 3: when we programatically selecting the row then it is not counting that sender is cell. so it will be not able to recognize the selected product. so we need to provide the default value for the selected product.
-        pvc.selectedProduct = productList[0]
+        if let _ = sender as? UIBarButtonItem {
+            pvc.selectedProduct = Product(context: context)
+        } else {
+            // else will execute at the time of when the seuge is going to perform and te sender is not bar button item.
+            pvc.selectedProduct = productList[0]
+        }
         
         // if the navigation is happening on the click of the cell from tableview
         if let cell = sender as? UITableViewCell {
@@ -242,9 +247,13 @@ class ProductsProvidersTVC: UITableViewController {
         //let sourceViewController = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
         saveProducts()
-        loadProducts()
+        print("FIRST productlist count: \(productList.count)")
+        print("1.Product list:\(productList)")
+        print("\n")
+        
         tableView.reloadData()
-        print("Product list:\(productList)")
+        print("THIRD productlist count: \(productList.count)")
+        print("3.Product list:\(productList)")
     }
     
     // method to load the products
