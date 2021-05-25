@@ -144,19 +144,11 @@ class ProductsProvidersTVC: UITableViewController {
         
         let product11 = Product(context: context)
         product11.id = 11
-        product11.name = "Rocking chair"
-        product1.price = 18
-        product11.provider = "Flipkart"
-        product11.stock = 50
-        product11.details = "a chair mounted on rockers or springs, which can rock back and forth."
-        
-        let product12 = Product(context: context)
-        product12.id = 12
-        product12.name = "Stool"
-        product12.price = 10
-        product12.provider = "Amazon"
-        product12.stock = 200
-        product12.details = "a seat without a back or arms, typically resting on three or four legs or on a single pedestal."
+        product11.name = "Stool"
+        product11.price = 10
+        product11.provider = "Amazon"
+        product11.stock = 200
+        product11.details = "a seat without a back or arms, typically resting on three or four legs or on a single pedestal."
         
         productList.append(product1)
         productList.append(product2)
@@ -169,7 +161,6 @@ class ProductsProvidersTVC: UITableViewController {
         productList.append(product9)
         productList.append(product10)
         productList.append(product11)
-        productList.append(product12)
     }
     
     // MARK: - Table view data source
@@ -201,15 +192,15 @@ class ProductsProvidersTVC: UITableViewController {
     */
 
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            deleteProduct(product: productList[indexPath.row])
-            // after deleting the data from the core data it is mandatory to save the core data
-            saveProducts()
-            productList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            deleteProduct(product: productList[indexPath.row])
+//            // after deleting the data from the core data it is mandatory to save the core data
+//            saveProducts()
+//            productList.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
+//    }
 
     /*
     // Override to support rearranging the table view.

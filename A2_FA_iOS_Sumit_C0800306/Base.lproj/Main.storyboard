@@ -40,6 +40,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <connections>
                                     <segue destination="Ft2-st-IEX" kind="show" identifier="cellToProduct" id="b9A-wZ-IYH"/>
                                 </connections>
@@ -52,11 +53,6 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="xSu-Gb-3HS"/>
-                        <barButtonItem title="Item" image="plus" catalog="system" id="qQ1-fR-nZf">
-                            <connections>
-                                <segue destination="Ft2-st-IEX" kind="presentation" id="Kl2-Rg-umI"/>
-                            </connections>
-                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="kmC-w9-00I"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -126,7 +122,7 @@
                             </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dyy-Nh-Yl9"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="nqH-VZ-yev" firstAttribute="top" secondItem="lHU-AP-eDa" secondAttribute="bottom" constant="20" id="3Cc-Ya-HMd"/>
                             <constraint firstItem="lHU-AP-eDa" firstAttribute="top" secondItem="dyE-ZT-DIs" secondAttribute="bottom" constant="30" id="7b1-cF-f0c"/>
@@ -195,11 +191,7 @@
             <point key="canvasLocation" x="73.913043478260875" y="59.598214285714285"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="b9A-wZ-IYH"/>
-    </inferredMetricsTieBreakers>
     <resources>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -208,6 +200,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
