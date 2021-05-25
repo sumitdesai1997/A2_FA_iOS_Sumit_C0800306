@@ -65,6 +65,10 @@ class ProductVC: UIViewController {
         }
     }
     
+    @IBAction func clickCancel(_ sender: UIButton) {
+        performSegue(withIdentifier: "toThePPTVC", sender: self)
+    }
+    
     
     // MARK: - Navigation
 
