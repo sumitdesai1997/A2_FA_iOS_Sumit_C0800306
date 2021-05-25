@@ -13,6 +13,7 @@ class ProductsProvidersTVC: UITableViewController {
     // creating product list array from the Product entity, and providerlist from the Provider entity
     var productList = [Product]()
     var providerList = [Provider]()
+    var isProduct = true
     
     // creating context object to work with the core data
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -33,6 +34,7 @@ class ProductsProvidersTVC: UITableViewController {
         showSearchBar()
         
         loadProducts()
+        loadProviders()
         
         if(productList.count == 0){
             fillData()
@@ -194,14 +196,23 @@ class ProductsProvidersTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return productList.count
+        return isProduct ? productList.count : providerList.count
     }
     
     // method to display the value inside the cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellProduct", for: indexPath)
-        cell.textLabel?.text = productList[indexPath.row].name
-        cell.detailTextLabel?.text = productList[indexPath.row].provider
+        
+        if(isProduct){
+            cell.textLabel?.text = productList[indexPath.row].name
+            cell.detailTextLabel?.text = productList[indexPath.row].provider
+            cell.imageView?.image = nil
+        } else {
+            cell.textLabel?.text = providerList[indexPath.row].name
+            cell.detailTextLabel?.text = String(providerList[indexPath.row].products?.count ?? 0)
+            cell.imageView?.image = UIImage(systemName: "folder")
+        }
+        
         return cell
     }
 
@@ -216,11 +227,19 @@ class ProductsProvidersTVC: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            deleteProduct(product: productList[indexPath.row])
-            // after deleting the data from the core data it is mandatory to save the core data
-            saveProducts()
-            productList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            if(isProduct){
+                deleteProduct(product: productList[indexPath.row])
+                // after deleting the data from the core data it is mandatory to save the core data
+                saveProducts()
+                productList.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } else {
+                deleteProvider(provider: providerList[indexPath.row])
+                // after deleting the data from the core data it is mandatory to save the core data
+                saveProducts()
+                providerList.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
         }
     }
 
@@ -297,6 +316,22 @@ class ProductsProvidersTVC: UITableViewController {
         tableView.reloadData()
     }
     
+    // method to load the products
+    func loadProviders(predicate: NSPredicate? = nil){
+        let request: NSFetchRequest<Provider> = Provider.fetchRequest()
+        
+        if let requestedPredicate = predicate{
+            request.predicate = requestedPredicate
+        }
+    
+        do{
+            providerList = try context.fetch(request)
+        } catch{
+            print("error while loading providers: \(error.localizedDescription)")
+        }
+        tableView.reloadData()
+    }
+    
     // method to save data into context (as every time we run the simulator it will fetch the data from core data. so saving updated data into core data is mandatory)
     func saveProducts(){
         do{
@@ -306,9 +341,14 @@ class ProductsProvidersTVC: UITableViewController {
         }
     }
     
-    // deleting data from the context
+    // deleting data from the context for the product
     func deleteProduct(product: Product){
         context.delete(product)
+    }
+    
+    // deleting data from the context for the provider
+    func deleteProvider(provider: Provider){
+        context.delete(provider)
     }
     
     func showSearchBar() {
@@ -321,6 +361,15 @@ class ProductsProvidersTVC: UITableViewController {
     }
     
     @IBAction func showClick(_ sender: UIBarButtonItem) {
+        if(isProduct){
+            isProduct = false
+            title = "Providers"
+            tableView.reloadData()
+        } else {
+            isProduct = true
+            title = "Products"
+            tableView.reloadData()
+        }
     }
     
     

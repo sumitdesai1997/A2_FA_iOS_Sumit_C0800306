@@ -76,6 +76,7 @@ class ProductVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let pptvc = segue.destination as! ProductsProvidersTVC
         pptvc.productList = self.productList
+        pptvc.providerList = self.providerList
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -88,6 +89,8 @@ class ProductVC: UIViewController {
             return false
         } else {
             // if value entered by user then create Object of Product and add that object to productList
+            
+            var isProviderExist = false
             let newProduct = Product(context: self.context)
             newProduct.name = nameTF.text
             if let id = idTF.text{
@@ -100,6 +103,20 @@ class ProductVC: UIViewController {
             }
             newProduct.details = detailsTV.text
             self.productList.append(newProduct)
+            
+            // to check if the provider is already exist or not
+            for provider in self.providerList{
+                if(newProduct.provider == provider.name){
+                    isProviderExist = true
+                    break
+                }
+            }
+            
+            if(!isProviderExist){
+                let newProvider = Provider(context: context)
+                newProvider.name = newProduct.provider
+                self.providerList.append(newProvider)
+            }
         }
         return true
     }
