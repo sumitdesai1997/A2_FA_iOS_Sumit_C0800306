@@ -1,5 +1,5 @@
 //
-//  DetailsTVC.swift
+//  ProductsProvidersTVC.swift
 //  A2_FA_iOS_Sumit_C0800306
 //
 //  Created by Sumit Desai on 21/05/21.
@@ -290,12 +290,14 @@ class ProductsProvidersTVC: UITableViewController {
 
 extension ProductsProvidersTVC: UISearchBarDelegate{
         
+    // method to search the products as per the user input after click on search button on keyboard
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // add predicate
         let predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchBar.text!)
         loadProducts(predicate: predicate)
     }
     
+    // method for cancle button click near search bar
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         loadProducts()
         
@@ -304,6 +306,7 @@ extension ProductsProvidersTVC: UISearchBarDelegate{
         }
     }
     
+    // textDidChange method for search bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text?.count == 0 {
             loadProducts()
