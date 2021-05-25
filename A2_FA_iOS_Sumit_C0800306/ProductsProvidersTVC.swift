@@ -164,27 +164,27 @@ class ProductsProvidersTVC: UITableViewController {
         productList.append(product9)
         productList.append(product10)
         productList.append(product11)
-        
-        let provider1 = Provider(context: context)
-        provider1.name = "Amazon"
-        
-        let provider2 = Provider(context: context)
-        provider2.name = "Snapdeal"
-        
-        let provider3 = Provider(context: context)
-        provider3.name = "Alibaba"
-        
-        let provider4 = Provider(context: context)
-        provider4.name = "Flipkart"
-        
-        let provider5 = Provider(context: context)
-        provider5.name = "IKEA"
 
-        providerList.append(provider1)
-        providerList.append(provider2)
-        providerList.append(provider3)
-        providerList.append(provider4)
-        providerList.append(provider5)
+        // adding providers programattically
+        var isProviderExist = false
+        for product in productList{
+
+            for provider in providerList{
+                if(product.provider == provider.name){
+                    isProviderExist = true
+                    break
+                } else{
+                    isProviderExist = false
+                }
+            }
+            
+            if(!isProviderExist){
+                let newProvider = Provider(context: context)
+                newProvider.name = product.provider
+                providerList.append(newProvider)
+            }
+        }
+
     }
     
     // MARK: - Table view data source
