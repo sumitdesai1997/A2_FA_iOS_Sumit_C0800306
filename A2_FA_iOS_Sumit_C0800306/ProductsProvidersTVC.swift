@@ -172,6 +172,8 @@ class ProductsProvidersTVC: UITableViewController {
             for provider in providerList{
                 if(product.provider == provider.name){
                     isProviderExist = true
+                    // to add the relationship between the product and provider
+                    product.providers = provider
                     break
                 } else{
                     isProviderExist = false
@@ -182,6 +184,8 @@ class ProductsProvidersTVC: UITableViewController {
                 let newProvider = Provider(context: context)
                 newProvider.name = product.provider
                 providerList.append(newProvider)
+                // to add the relationship between the product and provider
+                product.providers = newProvider
             }
         }
 
