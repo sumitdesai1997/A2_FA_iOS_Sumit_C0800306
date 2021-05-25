@@ -426,10 +426,12 @@ class ProductsProvidersTVC: UITableViewController {
         if(isProduct){
             isProduct = false
             title = "Providers"
+            sender.title = "Show Providers"
             tableView.reloadData()
         } else {
             isProduct = true
             title = "Products"
+            sender.title = "Show Products"
             tableView.reloadData()
         }
     }

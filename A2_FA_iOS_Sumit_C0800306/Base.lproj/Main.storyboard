@@ -52,7 +52,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Show" id="Reu-xs-Lw4">
+                        <barButtonItem title="Show Providers" id="Reu-xs-Lw4">
                             <connections>
                                 <action selector="showClick:" destination="7dv-bV-fhb" id="2Zu-r9-111"/>
                             </connections>
