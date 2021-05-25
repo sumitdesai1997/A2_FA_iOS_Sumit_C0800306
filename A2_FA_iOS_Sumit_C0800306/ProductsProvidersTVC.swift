@@ -302,7 +302,7 @@ class ProductsProvidersTVC: UITableViewController {
         let pvc = segue.destination as! ProductVC
         pvc.productList = self.productList
         pvc.providerList = self.providerList
-        
+        pvc.delegate = self
         // part 3: when we programatically selecting the row then it is not counting that sender is cell. so it will be not able to recognize the selected product. so we need to provide the default value for the selected product.
         if let _ = sender as? UIBarButtonItem {
             pvc.selectedProduct = Product(context: context)
@@ -361,7 +361,14 @@ class ProductsProvidersTVC: UITableViewController {
         }
     
         do{
-            providerList = try context.fetch(request)
+            let tempList = try context.fetch(request)
+            // as the context will fetch all objectes created for products, it will also fetch the blank object created at the time of click of plus button. so we will have to filter the object which is required only.
+            providerList = [Provider]()
+            for temp in tempList{
+                if(temp.name != nil){
+                    providerList.append(temp)
+                }
+            }
         } catch{
             print("error while loading providers: \(error.localizedDescription)")
         }
@@ -385,6 +392,21 @@ class ProductsProvidersTVC: UITableViewController {
     // deleting data from the context for the provider
     func deleteProvider(provider: Provider){
         context.delete(provider)
+    }
+    
+    // method to upload the core data
+    func updateProduct(name: String, id: Int16, provider: String, price: Double, stock: Int16, details: String, providers: Provider) {
+        productList = []
+        let newProduct = Product(context: context)
+        newProduct.name = name
+        newProduct.id = id
+        newProduct.provider = provider
+        newProduct.price = price
+        newProduct.stock = stock
+        newProduct.details = details
+        newProduct.providers = providers
+        saveProducts()
+        loadProducts()
     }
     
     func showSearchBar() {

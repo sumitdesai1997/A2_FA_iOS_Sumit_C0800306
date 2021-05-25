@@ -24,6 +24,7 @@ class ProductVC: UIViewController {
     var productList = [Product]()
     var providerList = [Provider]()
     var selectedProduct : Product?
+    weak var delegate : ProductsProvidersTVC?
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -49,15 +50,10 @@ class ProductVC: UIViewController {
         }
         
         if(nameTF.text != ""){
-            btnSave.isHidden = true
             btnCancel.isHidden = true
             
             nameTF.isEnabled = false
             idTF.isEnabled = false
-            providerTF.isEnabled = false
-            priceTF.isEnabled = false
-            stockTF.isEnabled = false
-            detailsTV.isEditable = false
         }
     }
     
@@ -90,32 +86,60 @@ class ProductVC: UIViewController {
         } else {
             // if value entered by user then create Object of Product and add that object to productList
             
-            var isProviderExist = false
-            let newProduct = Product(context: self.context)
-            newProduct.name = nameTF.text
-            if let id = idTF.text{
-                newProduct.id = Int16(id)!
-            }
-            newProduct.provider = providerTF.text
-            newProduct.price = Double(priceTF.text!)!
-            if let stock = stockTF.text{
-                newProduct.stock = Int16(stock)!
-            }
-            newProduct.details = detailsTV.text
-            self.productList.append(newProduct)
-            
-            // to check if the provider is already exist or not
-            for provider in self.providerList{
-                if(newProduct.provider == provider.name){
-                    isProviderExist = true
-                    break
+            // if named is not enabled it means, that user is here to update the data, so updating the product here
+            if(!nameTF.isEnabled){
+                for product in productList{
+                    if(product.name == nameTF.text){
+                        delegate?.deleteProduct(product: product)
+                        
+                        var isProviderExist = false
+                        var newProvider = Provider(context: context)
+                        for provider in providerList{
+                            if(provider.name == providerTF.text!){
+                                newProvider = provider
+                                isProviderExist = true
+                                break
+                            }
+                        }
+                        
+                        if(!isProviderExist){
+                            newProvider.name = providerTF.text
+                            self.providerList.append(newProvider)
+                        }
+                        
+                        delegate?.updateProduct(name: nameTF.text!, id: Int16(idTF.text!)!, provider: providerTF.text!, price: Double(priceTF.text!)!, stock: Int16(stockTF.text!)!, details: detailsTV.text!, providers: newProvider)
+                    }
                 }
-            }
-            
-            if(!isProviderExist){
-                let newProvider = Provider(context: context)
-                newProvider.name = newProduct.provider
-                self.providerList.append(newProvider)
+            } else {
+                // user is here to add the product
+                
+                var isProviderExist = false
+                let newProduct = Product(context: self.context)
+                newProduct.name = nameTF.text
+                if let id = idTF.text{
+                    newProduct.id = Int16(id)!
+                }
+                newProduct.provider = providerTF.text
+                newProduct.price = Double(priceTF.text!)!
+                if let stock = stockTF.text{
+                    newProduct.stock = Int16(stock)!
+                }
+                newProduct.details = detailsTV.text
+                self.productList.append(newProduct)
+                
+                // to check if the provider is already exist or not
+                for provider in self.providerList{
+                    if(newProduct.provider == provider.name){
+                        isProviderExist = true
+                        break
+                    }
+                }
+                
+                if(!isProviderExist){
+                    let newProvider = Provider(context: context)
+                    newProvider.name = newProduct.provider
+                    self.providerList.append(newProvider)
+                }
             }
         }
         return true
