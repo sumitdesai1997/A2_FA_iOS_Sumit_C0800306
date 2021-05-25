@@ -131,6 +131,8 @@ class ProductVC: UIViewController {
                 for provider in self.providerList{
                     if(newProduct.provider == provider.name){
                         isProviderExist = true
+                        // adding relationship for newly added product
+                        newProduct.providers = provider
                         break
                     }
                 }
@@ -139,6 +141,8 @@ class ProductVC: UIViewController {
                     let newProvider = Provider(context: context)
                     newProvider.name = newProduct.provider
                     self.providerList.append(newProvider)
+                    // adding relationship for newly added product
+                    newProduct.providers = newProvider
                 }
             }
         }
