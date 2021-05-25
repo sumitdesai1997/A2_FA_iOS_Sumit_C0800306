@@ -228,12 +228,48 @@ class ProductsProvidersTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             if(isProduct){
+                
+                // deleting the provider if after deleting this product there will be no more products from this product's provider
+                let delProduct = productList[indexPath.row]
+                var count = 0
+                
+                for product in productList{
+                    if(product.provider == delProduct.provider){
+                        count += 1
+                    }
+                }
+                
+                if(count == 1){
+                    for provider in providerList{
+                        if(provider.name == delProduct.provider){
+                            deleteProvider(provider: provider)
+                            // after deleting the data from the core data it is mandatory to save the core data
+                            saveProducts()
+                            loadProviders()
+                        }
+                    }
+                }
+                
+                // deleting the selected product
                 deleteProduct(product: productList[indexPath.row])
                 // after deleting the data from the core data it is mandatory to save the core data
                 saveProducts()
                 productList.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
             } else {
+                let delProvider = providerList[indexPath.row]
+                
+                // deleting all the products that are related to the provider being deleted
+                for product in productList{
+                    if(product.provider == delProvider.name){
+                        deleteProduct(product: product)
+                        // after deleting the data from the core data it is mandatory to save the core data
+                        saveProducts()
+                        loadProducts()
+                    }
+                }
+                
+                // deleting the selected provider
                 deleteProvider(provider: providerList[indexPath.row])
                 // after deleting the data from the core data it is mandatory to save the core data
                 saveProducts()
