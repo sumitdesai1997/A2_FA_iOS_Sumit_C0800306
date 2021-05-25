@@ -247,13 +247,7 @@ class ProductsProvidersTVC: UITableViewController {
         //let sourceViewController = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
         saveProducts()
-        print("FIRST productlist count: \(productList.count)")
-        print("1.Product list:\(productList)")
-        print("\n")
-        
         tableView.reloadData()
-        print("THIRD productlist count: \(productList.count)")
-        print("3.Product list:\(productList)")
     }
     
     // method to load the products
@@ -265,7 +259,14 @@ class ProductsProvidersTVC: UITableViewController {
         }
     
         do{
-            productList = try context.fetch(request)
+            let tempList = try context.fetch(request)
+            // as the context will fetch all objectes created for products, it will also fetch the blank object created at the time of click of plus button. so we will have to filter the object which is required only.
+            productList = [Product]()
+            for temp in tempList{
+                if(temp.id != 0){
+                    productList.append(temp)
+                }
+            }
         } catch{
             print("erro while loading products: \(error.localizedDescription)")
         }
