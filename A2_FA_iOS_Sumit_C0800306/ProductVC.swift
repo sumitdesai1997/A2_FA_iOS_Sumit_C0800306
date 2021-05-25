@@ -20,8 +20,9 @@ class ProductVC: UIViewController {
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var btnSave: UIButton!
     
-    // creating the product list here that will have the value from the ProductsProvidersTVC
+    // creating the product list, provider list here that will have the value from the ProductsProvidersTVC
     var productList = [Product]()
+    var providerList = [Provider]()
     var selectedProduct : Product?
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

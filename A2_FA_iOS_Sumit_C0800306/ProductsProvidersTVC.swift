@@ -10,8 +10,9 @@ import CoreData
 
 class ProductsProvidersTVC: UITableViewController {
 
-    // creating product list array from the Product entity
+    // creating product list array from the Product entity, and providerlist from the Provider entity
     var productList = [Product]()
+    var providerList = [Provider]()
     
     // creating context object to work with the core data
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -161,6 +162,27 @@ class ProductsProvidersTVC: UITableViewController {
         productList.append(product9)
         productList.append(product10)
         productList.append(product11)
+        
+        let provider1 = Provider(context: context)
+        provider1.name = "Amazon"
+        
+        let provider2 = Provider(context: context)
+        provider2.name = "Snapdeal"
+        
+        let provider3 = Provider(context: context)
+        provider3.name = "Alibaba"
+        
+        let provider4 = Provider(context: context)
+        provider4.name = "Flipkart"
+        
+        let provider5 = Provider(context: context)
+        provider5.name = "IKEA"
+
+        providerList.append(provider1)
+        providerList.append(provider2)
+        providerList.append(provider3)
+        providerList.append(provider4)
+        providerList.append(provider5)
     }
     
     // MARK: - Table view data source
@@ -224,6 +246,8 @@ class ProductsProvidersTVC: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let pvc = segue.destination as! ProductVC
         pvc.productList = self.productList
+        pvc.providerList = self.providerList
+        
         // part 3: when we programatically selecting the row then it is not counting that sender is cell. so it will be not able to recognize the selected product. so we need to provide the default value for the selected product.
         if let _ = sender as? UIBarButtonItem {
             pvc.selectedProduct = Product(context: context)
