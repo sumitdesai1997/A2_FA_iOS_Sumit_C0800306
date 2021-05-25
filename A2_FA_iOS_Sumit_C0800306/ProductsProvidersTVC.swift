@@ -445,12 +445,21 @@ extension ProductsProvidersTVC: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // add predicate
         let predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchBar.text!)
-        loadProducts(predicate: predicate)
+        if(isProduct){
+            loadProducts(predicate: predicate)
+        } else {
+            loadProviders(predicate: predicate)
+        }
     }
     
     // method for cancle button click near search bar
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        loadProducts()
+        
+        if(isProduct){
+            loadProducts()
+        } else {
+            loadProviders()
+        }
         
         DispatchQueue.main.async {
             searchBar.resignFirstResponder()
@@ -460,7 +469,11 @@ extension ProductsProvidersTVC: UISearchBarDelegate{
     // textDidChange method for search bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text?.count == 0 {
-            loadProducts()
+            if(isProduct){
+                loadProducts()
+            } else {
+                loadProviders()
+            }
             
             DispatchQueue.main.async {
                 searchBar.resignFirstResponder()
