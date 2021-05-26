@@ -429,7 +429,7 @@ class ProductsProvidersTVC: UITableViewController {
     func showSearchBar() {
         searchBar.searchBar.delegate = self
         searchBar.obscuresBackgroundDuringPresentation = false
-        searchBar.searchBar.placeholder = "Search Product"
+        searchBar.searchBar.placeholder = "Search"
         navigationItem.searchController = searchBar
         definesPresentationContext = true
         searchBar.searchBar.searchTextField.textColor = .black
