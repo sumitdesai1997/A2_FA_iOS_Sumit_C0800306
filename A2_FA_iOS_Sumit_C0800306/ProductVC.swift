@@ -24,6 +24,7 @@ class ProductVC: UIViewController {
     var productList = [Product]()
     var providerList = [Provider]()
     var selectedProduct : Product?
+    var productIndex = 0
     weak var delegate : ProductsProvidersTVC?
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -93,8 +94,11 @@ class ProductVC: UIViewController {
             // if named is not enabled it means, that user is here to update the data, so updating the product here
             if(!nameTF.isEnabled){
                 for product in productList{
-                    if(product.name == nameTF.text){
+                    if(product.name == nameTF.text!){
                         delegate?.deleteProduct(product: product)
+                        delegate?.saveProducts()
+                        productList.remove(at: productIndex)
+                        //delegate?.tableView.deleteRows(at: [IndexPath(row: productIndex, section: 0)], with: .fade)
                         
                         var isProviderExist = false
                         var newProvider = Provider(context: context)
@@ -102,7 +106,6 @@ class ProductVC: UIViewController {
                             if(provider.name == providerTF.text!){
                                 newProvider = provider
                                 isProviderExist = true
-                                break
                             }
                         }
                         

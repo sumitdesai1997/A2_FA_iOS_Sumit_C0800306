@@ -43,6 +43,9 @@ class ProductsProvidersTVC: UITableViewController {
         if(productList.count == 0){
             fillData()
         }
+        
+        tableView.reloadData()
+
     }
     
     // part 1: on view did appear redirect to the product details of the first row
@@ -319,6 +322,8 @@ class ProductsProvidersTVC: UITableViewController {
             }
             else {
                 // else will execute at the time of when the seuge is going to perform and the sender is not bar button item.
+                pvc.productIndex = productIndex
+                //pvc.tableView = tableView
                 if(!isRedirected){
                     pvc.selectedProduct = productList[0]
                     isRedirected = true
@@ -417,7 +422,6 @@ class ProductsProvidersTVC: UITableViewController {
     
     // method to upload the core data
     func updateProduct(name: String, id: Int16, provider: String, price: Double, stock: Int16, details: String, providers: Provider) {
-        productList = []
         let newProduct = Product(context: context)
         newProduct.name = name
         newProduct.id = id
@@ -426,8 +430,16 @@ class ProductsProvidersTVC: UITableViewController {
         newProduct.stock = stock
         newProduct.details = details
         newProduct.providers = providers
+        
         saveProducts()
-        loadProducts()
+
+        productList.append(newProduct)
+        print("1. list \(productList)")
+        print("1. count \(productList.count) \n")
+        
+        //loadProducts()
+        print("2. list \(productList)")
+        print("2. count \(productList.count) \n")
     }
     
     func showSearchBar() {
