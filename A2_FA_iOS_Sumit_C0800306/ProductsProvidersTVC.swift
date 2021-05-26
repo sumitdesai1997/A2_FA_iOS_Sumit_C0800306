@@ -14,6 +14,10 @@ class ProductsProvidersTVC: UITableViewController {
     var productList = [Product]()
     var providerList = [Provider]()
     var isProduct = true
+    var isRedirected = false
+    var selectedProduct: Product?
+    var productIndex = 0
+    var providerIndex = 0
     
     // creating context object to work with the core data
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -42,7 +46,6 @@ class ProductsProvidersTVC: UITableViewController {
     }
     
     // part 1: on view did appear redirect to the product details of the first row
-    var isRedirected = false
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if(!isRedirected){
@@ -56,11 +59,13 @@ class ProductsProvidersTVC: UITableViewController {
     // if we're doing selection of row programatically then segue is not happening which we had provided from the table cell to the required screen into mainstoryboard. so we have to manually perform the seuge here
     // now we only want to perform this manual seuge once only (and that too for our provided indexpath at the time of view dead appear). so we need to provide the restriction using the flag
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(!isRedirected){
+        if(isProduct){
+            productIndex = indexPath.row
             performSegue(withIdentifier: "cellToProduct", sender: self)
-            isRedirected = true
+        } else {
+            providerIndex = indexPath.row
+            performSegue(withIdentifier: "toProductTVC", sender: self)
         }
-        
     }
     
     func fillData(){
@@ -303,22 +308,34 @@ class ProductsProvidersTVC: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let pvc = segue.destination as! ProductVC
-        pvc.productList = self.productList
-        pvc.providerList = self.providerList
-        pvc.delegate = self
-        // part 3: when we programatically selecting the row then it is not counting that sender is cell. so it will be not able to recognize the selected product. so we need to provide the default value for the selected product.
-        if let _ = sender as? UIBarButtonItem {
-            pvc.selectedProduct = Product(context: context)
+        if(isProduct){
+            let pvc = segue.destination as! ProductVC
+            pvc.productList = self.productList
+            pvc.providerList = self.providerList
+            pvc.delegate = self
+            // part 3: when we programatically selecting the row then it is not counting that sender is cell. so it will be not able to recognize the selected product. so we need to provide the default value for the selected product.
+            if let _ = sender as? UIBarButtonItem {
+                pvc.selectedProduct = Product(context: context)
+            }
+            else {
+                // else will execute at the time of when the seuge is going to perform and the sender is not bar button item.
+                if(!isRedirected){
+                    pvc.selectedProduct = productList[0]
+                    isRedirected = true
+                } else {
+                    pvc.selectedProduct = productList[productIndex]
+                }
+                 
+            }
         } else {
-            // else will execute at the time of when the seuge is going to perform and te sender is not bar button item.
-            pvc.selectedProduct = productList[0]
-        }
-        
-        // if the navigation is happening on the click of the cell from tableview
-        if let cell = sender as? UITableViewCell {
-            if let index = tableView.indexPath(for: cell)?.row {
-                pvc.selectedProduct = productList[index]
+            let ptvc = segue.destination as? ProductTVC
+
+            let selectedProvider = providerList[providerIndex]
+
+            for product in productList{
+                if(product.provider == selectedProvider.name){
+                    ptvc?.providerProductsList.append(product.name!)
+                }
             }
         }
     }
