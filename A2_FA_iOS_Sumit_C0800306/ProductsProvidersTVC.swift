@@ -19,6 +19,7 @@ class ProductsProvidersTVC: UITableViewController {
     var productIndex = 0
     var providerIndex = 0
     var isSave = false
+    @IBOutlet weak var addProduct: UIBarButtonItem!
     
     // creating context object to work with the core data
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -466,11 +467,13 @@ class ProductsProvidersTVC: UITableViewController {
             isProduct = false
             title = "Providers"
             sender.title = "Show Products"
+            addProduct.isEnabled = false
             tableView.reloadData()
         } else {
             isProduct = true
             title = "Products"
             sender.title = "Show Providers"
+            addProduct.isEnabled = true
             tableView.reloadData()
         }
     }

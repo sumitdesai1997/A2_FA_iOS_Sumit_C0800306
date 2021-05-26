@@ -64,6 +64,7 @@
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="kmC-w9-00I"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addProduct" destination="pKl-K5-Kfl" id="T9A-wY-X8O"/>
                         <segue destination="yP5-2P-Kt9" kind="show" identifier="toProductTVC" id="j4i-EX-a9u"/>
                         <segue destination="Ft2-st-IEX" kind="show" identifier="cellToProduct" id="pIc-sS-KMz"/>
                     </connections>
