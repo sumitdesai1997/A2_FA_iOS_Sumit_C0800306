@@ -30,6 +30,7 @@ class ProductVC: UIViewController {
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    // MARK: - Life cycle method view did load
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,6 +54,7 @@ class ProductVC: UIViewController {
             stockTF.text = ""
         }
         
+        // it means if the user comes for product updation (because then only nameTF  will have value)
         if(nameTF.text != ""){
             btnCancel.isHidden = true
             

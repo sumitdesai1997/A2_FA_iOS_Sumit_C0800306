@@ -27,6 +27,7 @@ class ProductsProvidersTVC: UITableViewController {
     // search bar object
     let searchBar = UISearchController(searchResultsController: nil)
     
+    // MARK: - Life cycle method view did load
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,6 +48,7 @@ class ProductsProvidersTVC: UITableViewController {
 
     }
     
+    // MARK: - Life cycle method view did apppear
     // part 1: on view did appear redirect to the product details of the first row
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -58,6 +60,7 @@ class ProductsProvidersTVC: UITableViewController {
         tableView.reloadData()
     }
     
+    // MARK: - Life cycle method view will apppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -76,6 +79,7 @@ class ProductsProvidersTVC: UITableViewController {
         }
     }
     
+    // MARK: - function to fil the initial data
     func fillData(){
         let product1 = Product(context: context)
         product1.id = 1
