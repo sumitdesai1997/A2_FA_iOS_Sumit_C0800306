@@ -82,6 +82,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03B879E6265EA474006679F5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				03B879C6265DBF61006679F5 /* ProductTVC.swift */,
+				03FFDBDE2658C576002CAFC1 /* ProductsProvidersTVC.swift */,
+				03FFDBE62658E9B9002CAFC1 /* ProductVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		03B879E7265EA499006679F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				03FFDBAE2658C09F002CAFC1 /* A2_FA_iOS_Sumit_C0800306.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		03FFDB992658C09F002CAFC1 = {
 			isa = PBXGroup;
 			children = (
@@ -105,16 +123,14 @@
 		03FFDBA42658C09F002CAFC1 /* A2_FA_iOS_Sumit_C0800306 */ = {
 			isa = PBXGroup;
 			children = (
+				03B879E7265EA499006679F5 /* Model */,
+				03B879E6265EA474006679F5 /* ViewControllers */,
 				03FFDBA52658C09F002CAFC1 /* AppDelegate.swift */,
 				03FFDBA72658C09F002CAFC1 /* SceneDelegate.swift */,
 				03FFDBAB2658C09F002CAFC1 /* Main.storyboard */,
 				03FFDBB12658C0A6002CAFC1 /* Assets.xcassets */,
 				03FFDBB32658C0A6002CAFC1 /* LaunchScreen.storyboard */,
 				03FFDBB62658C0A6002CAFC1 /* Info.plist */,
-				03FFDBAE2658C09F002CAFC1 /* A2_FA_iOS_Sumit_C0800306.xcdatamodeld */,
-				03FFDBDE2658C576002CAFC1 /* ProductsProvidersTVC.swift */,
-				03FFDBE62658E9B9002CAFC1 /* ProductVC.swift */,
-				03B879C6265DBF61006679F5 /* ProductTVC.swift */,
 			);
 			path = A2_FA_iOS_Sumit_C0800306;
 			sourceTree = "<group>";
