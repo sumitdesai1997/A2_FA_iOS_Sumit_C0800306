@@ -398,7 +398,7 @@ class ProductsProvidersTVC: UITableViewController {
             // as the context will fetch all objectes created for products, it will also fetch the blank object created at the time of click of plus button. so we will have to filter the object which is required only.
             providerList = [Provider]()
             for temp in tempList{
-                if(temp.name != nil){
+                if(temp.products?.count != 0){
                     providerList.append(temp)
                 }
             }

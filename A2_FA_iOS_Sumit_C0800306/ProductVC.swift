@@ -25,6 +25,7 @@ class ProductVC: UIViewController {
     var providerList = [Provider]()
     var selectedProduct : Product?
     var productIndex = 0
+    var existingProvider = ""
     weak var delegate : ProductsProvidersTVC?
     
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -39,6 +40,8 @@ class ProductVC: UIViewController {
         priceTF.text = String(selectedProduct?.price ?? 0.0)
         stockTF.text = String(selectedProduct?.stock ?? 0)
         detailsTV.text = selectedProduct?.details
+        
+        existingProvider = providerTF.text ?? ""
         
         if(idTF.text == String(0)){
             idTF.text = ""
@@ -96,14 +99,20 @@ class ProductVC: UIViewController {
             
             // if named is not enabled it means, that user is here to update the data, so updating the product here
             if(!nameTF.isEnabled){
+                var providerCount = 0
+                var isProviderExist = false
                 for product in productList{
+                    
+                    if(existingProvider == product.provider){
+                        providerCount += 1
+                    }
+                    
                     if(product.name == nameTF.text!){
                         delegate?.deleteProduct(product: product)
                         delegate?.saveProducts()
                         productList.remove(at: productIndex)
                         //delegate?.tableView.deleteRows(at: [IndexPath(row: productIndex, section: 0)], with: .fade)
                         
-                        var isProviderExist = false
                         var newProvider = Provider(context: context)
                         for provider in providerList{
                             if(provider.name == providerTF.text!){
@@ -119,7 +128,18 @@ class ProductVC: UIViewController {
                         
                         delegate?.updateProduct(name: nameTF.text!, id: Int16(idTF.text!)!, provider: providerTF.text!, price: Double(priceTF.text!)!, stock: Int16(stockTF.text!)!, details: detailsTV.text!, providers: newProvider)
                     }
+                    
                 }
+                
+                if(providerCount == 1 && existingProvider != providerTF.text!){
+                    for provider in providerList {
+                        if(provider.name == existingProvider){
+                            delegate?.deleteProvider(provider: provider)
+                            delegate?.saveProducts()
+                        }
+                    }
+                }
+                
             } else {
                 // user is here to add the product
                 
