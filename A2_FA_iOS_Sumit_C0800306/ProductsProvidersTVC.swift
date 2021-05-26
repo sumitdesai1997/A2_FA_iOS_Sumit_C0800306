@@ -18,6 +18,7 @@ class ProductsProvidersTVC: UITableViewController {
     var selectedProduct: Product?
     var productIndex = 0
     var providerIndex = 0
+    var isSave = false
     
     // creating context object to work with the core data
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -56,6 +57,12 @@ class ProductsProvidersTVC: UITableViewController {
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
             tableView.delegate?.tableView?(tableView!, didSelectRowAt: indexPath)
         }
+        tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     // part 2: as we need to select the cell, we need to provide what we need once the cell is selected
@@ -432,14 +439,17 @@ class ProductsProvidersTVC: UITableViewController {
         newProduct.providers = providers
         
         saveProducts()
-
         productList.append(newProduct)
-        print("1. list \(productList)")
-        print("1. count \(productList.count) \n")
         
-        //loadProducts()
-        print("2. list \(productList)")
-        print("2. count \(productList.count) \n")
+        var tempProdList: [Product] = []
+        for product in productList{
+            if(product.id != 0){
+                tempProdList.append(product)
+            }
+        }
+        productList = tempProdList
+        loadProviders()
+        tableView.reloadData()
     }
     
     func showSearchBar() {
@@ -455,12 +465,12 @@ class ProductsProvidersTVC: UITableViewController {
         if(isProduct){
             isProduct = false
             title = "Providers"
-            sender.title = "Show Providers"
+            sender.title = "Show Products"
             tableView.reloadData()
         } else {
             isProduct = true
             title = "Products"
-            sender.title = "Show Products"
+            sender.title = "Show Providers"
             tableView.reloadData()
         }
     }

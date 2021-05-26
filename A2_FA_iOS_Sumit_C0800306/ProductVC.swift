@@ -61,8 +61,11 @@ class ProductVC: UIViewController {
     @IBAction func clickSave(_ sender: UIButton) {
         if shouldPerformSegue(withIdentifier: "toThePPTVC", sender: self){
             // do your work before you want to perform segue below then call perform segue
-            
-            performSegue(withIdentifier: "toThePPTVC", sender: self)
+           if(!nameTF.isEnabled){
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                performSegue(withIdentifier: "toThePPTVC", sender: self)
+            }
         }
     }
     
